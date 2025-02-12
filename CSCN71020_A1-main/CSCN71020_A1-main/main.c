@@ -1,4 +1,6 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
 
 void printWelcomeMenu();
 void printOptions();
@@ -15,7 +17,7 @@ void main() {
 	int inputNum;
 
 	printf("Enter operation number: ");
-	scanf_s("%1o", &inputNum);
+	scanf("%1o", &inputNum);
 
 	switch (inputNum)
 	{
@@ -42,9 +44,14 @@ void printOptions() {
 void subtract() {
 	double num1, num2, result;
 	printf("Enter the first value:");
-	scanf_s("%lf", &num1);
+	int garbCheck1 = scanf("%lf", &num1);
 	printf("Enter the second value:");
-	scanf_s("%lf", &num2);
+	int garbCheck2 = scanf("%lf", &num2);
+
+	if (garbCheck1 != 1 || garbCheck2 != 1) {
+		printf("numbers only");
+		exit(EXIT_FAILURE);
+	}
 	result = num1 - num2;
 	printf("%lf - %lf = %lf\n", num1, num2, result);
 }
@@ -52,9 +59,14 @@ void subtract() {
 void add() {
 	double num1, num2, result;
 	printf("Enter the first value:");
-	scanf_s("%lf", &num1);
+	int garbCheck3 = scanf("%lf", &num1);
 	printf("Enter the second value:");
-	scanf_s("%lf", &num2);
+	int garbCheck4 = scanf("%lf", &num2);
+
+	if (garbCheck3 != 1 || garbCheck4 != 1) {
+		printf("numbers only");
+		exit(EXIT_FAILURE);
+	}
 	result = num1 + num2;
 	printf("%lf + %lf = %lf\n", num1, num2, result);
 }
